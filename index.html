@@ -1,12 +1,3 @@
-Listo. Queda guardado: **para todos los WhatsApp** uso siempre **esa imagen** `https://iili.io/fm0V224.jpg`.
-
-Y acá tenés el **index completo** ya ajustado:
-
-* **Tarjetas más transparentes** (para ver más el overlay).
-* **Overlay más clarito** (se ve, pero no molesta).
-* **Todos los WhatsApp** ahora usan **tu imagen** como ícono (no SVG).
-
-```html
 <!doctype html>
 <html lang="es-AR">
 <head>
@@ -37,9 +28,9 @@ Y acá tenés el **index completo** ya ajustado:
       --bg1:#ffe6f0;
       --bg2:#ffd3e4;
 
-      /* cards más transparentes */
-      --cardA: rgba(255,255,255,.72);
-      --cardB: rgba(255,255,255,.52);
+      /* SOLO las tarjetas tienen opacidad */
+      --cardA: rgba(255,255,255,.62);
+      --cardB: rgba(255,255,255,.42);
 
       --text:#3a2730;
       --muted:#6b4b57;
@@ -63,7 +54,7 @@ Y acá tenés el **index completo** ya ajustado:
       overflow-x:hidden;
     }
 
-    /* Overlay más clarito, visible pero sin ensuciar */
+    /* Overlay SIN opacidad (queda claro por filtro, no por opacity) */
     body::before{
       content:"";
       position:fixed;
@@ -73,8 +64,8 @@ Y acá tenés el **index completo** ya ajustado:
       background-repeat:no-repeat;
       background-position:center;
       background-size:contain; /* completa, sin recortes */
-      opacity:.26;            /* más visible pero clarito */
-      filter: brightness(1.10) saturate(1.05) contrast(1.02);
+      opacity:1;              /* sin opacidad */
+      filter: brightness(1.22) saturate(1.03) contrast(.98);
       z-index:0;
     }
 
@@ -184,7 +175,7 @@ Y acá tenés el **index completo** ya ajustado:
     .panel{
       border-radius:var(--radius);
       border:1px solid rgba(255,182,209,.6);
-      background:linear-gradient(180deg, var(--cardA), var(--cardB)); /* más transparente */
+      background:linear-gradient(180deg, var(--cardA), var(--cardB)); /* opacidad SOLO acá */
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -199,7 +190,7 @@ Y acá tenés el **index completo** ya ajustado:
       padding:8px 12px;
       border-radius:999px;
       border:1px dashed rgba(255,95,162,.38);
-      background:rgba(255,240,248,.60);
+      background:rgba(255,240,248,.58);
       color:#6b3550;
       font-weight:800;
       font-size:12.5px;
@@ -258,13 +249,10 @@ Y acá tenés el **index completo** ya ajustado:
       color: #5a2d41;
     }
 
-    /* WhatsApp logo (imagen) */
-    .waImg{
-      width:22px;
-      height:22px;
-      object-fit:contain;
-      border-radius:6px;
-      flex:0 0 auto;
+    /* WhatsApp oficial SVG */
+    .waIcon{
+      width:22px;height:22px; flex:0 0 auto;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.10));
     }
 
     .heroRight{
@@ -280,7 +268,7 @@ Y acá tenés el **index completo** ya ajustado:
       object-fit:contain;
       filter: drop-shadow(0 14px 30px rgba(255,95,162,.22));
       border-radius:22px;
-      background:rgba(255,255,255,.62); /* un poco más transparente */
+      background:linear-gradient(180deg, var(--cardA), var(--cardB));
       border:1px solid rgba(255,182,209,.65);
       padding:14px;
     }
@@ -331,7 +319,7 @@ Y acá tenés el **index completo** ya ajustado:
       padding:16px;
       border-radius:var(--radius);
       border:1px solid rgba(255,182,209,.65);
-      background: linear-gradient(180deg, var(--cardA), var(--cardB)); /* más transparente */
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -353,7 +341,7 @@ Y acá tenés el **index completo** ya ajustado:
       margin-top:10px;
       padding:7px 10px;
       border-radius:999px;
-      background:rgba(255,240,248,.62);
+      background:rgba(255,240,248,.58);
       border:1px dashed rgba(255,95,162,.34);
       font-weight:800;
       font-size:12px;
@@ -372,7 +360,7 @@ Y acá tenés el **index completo** ya ajustado:
       border-radius:var(--radius);
       overflow:hidden;
       border:1px solid rgba(255,182,209,.7);
-      background: linear-gradient(180deg, var(--cardA), var(--cardB)); /* más transparente */
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
       box-shadow: var(--shadow);
       cursor:pointer;
       transition: transform .16s ease;
@@ -437,7 +425,9 @@ Y acá tenés el **index completo** ya ajustado:
       padding:10px 12px;
       border-radius:16px;
       border:1px solid rgba(255,182,209,.6);
-      background:rgba(255,255,255,.60); /* más transparente */
+      background:rgba(255,255,255,.52);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .dot{
       width:10px;height:10px;border-radius:99px;
@@ -456,7 +446,7 @@ Y acá tenés el **index completo** ya ajustado:
       font-size:13px;
       border-radius:var(--radius);
       border:1px solid rgba(255,182,209,.55);
-      background:rgba(255,255,255,.56); /* más transparente */
+      background:rgba(255,255,255,.50);
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -479,13 +469,15 @@ Y acá tenés el **index completo** ya ajustado:
       gap:10px;
       padding:12px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.78); /* más transparente */
+      background:rgba(255,255,255,.64);
       border:1px solid rgba(255,182,209,.8);
       box-shadow: 0 14px 35px rgba(74, 23, 49, .18);
       text-decoration:none;
       font-weight:900;
       color:#2b1c22;
       max-width:min(92vw, 360px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .waFloat span{
       font-size:13.5px;
@@ -501,7 +493,7 @@ Y acá tenés el **index completo** ya ajustado:
       border-radius:26px;
       overflow:hidden;
       box-shadow: 0 30px 90px rgba(0,0,0,.35);
-      background:rgba(255,255,255,.88); /* más transparente */
+      background:rgba(255,255,255,.82);
     }
     dialog::backdrop{
       background: rgba(20, 8, 13, .55);
@@ -611,12 +603,16 @@ Y acá tenés el **index completo** ya ajustado:
         <h1>Cuadernos y papelería creativa que enamoran 💗</h1>
         <p class="sub">
           Diseños únicos para uso personal, marcas y celebraciones.
-          Contame la idea y lo armamos juntas/os: nombres, temáticas, colores y detalles.
+          Contame la idea y lo armamos: nombres, temáticas, colores y detalles.
         </p>
 
         <div class="ctaRow">
           <a class="btn btnPrimary" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20un%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
-            <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
+            <!-- WhatsApp oficial SVG -->
+            <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+              <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+            </svg>
             Pedir mi personalizado por WhatsApp
           </a>
 
@@ -780,7 +776,10 @@ Y acá tenés el **index completo** ya ajustado:
 
           <div class="ctaRow" style="margin-top:14px">
             <a class="btn btnPrimary" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20hacer%20un%20pedido%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
-              <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
+              <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+                <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+                <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+              </svg>
               Consultar por WhatsApp (respuesta rápida)
             </a>
 
@@ -814,7 +813,10 @@ Y acá tenés el **index completo** ya ajustado:
   </div>
 
   <a class="waFloat" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20hacer%20un%20pedido%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-    <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
+    <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+      <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+    </svg>
     <span>WhatsApp (consultas y pedidos)</span>
   </a>
 
@@ -828,7 +830,10 @@ Y acá tenés el **index completo** ya ajustado:
         <p id="lbDesc"></p>
         <div class="lbActions">
           <a class="btn btnPrimary" style="max-width:520px" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20este%20producto%20%E2%9C%A8" target="_blank" rel="noopener">
-            <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
+            <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+              <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+            </svg>
             Consultar por WhatsApp
           </a>
           <a class="btn btnGhost" style="max-width:520px" href="https://instagram.com/di_tati_quaderni" target="_blank" rel="noopener">
@@ -861,7 +866,7 @@ Y acá tenés el **index completo** ya ajustado:
         lbBadge.style.display = "none";
       }
       if(typeof dialog.showModal === "function") dialog.showModal();
-      else alert(title + "\\n\\n" + desc);
+      else alert(title + "\n\n" + desc);
     }
 
     gallery.addEventListener("click", (e) => {
