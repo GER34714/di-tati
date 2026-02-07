@@ -1,3 +1,12 @@
+Listo. Queda guardado: **para todos los WhatsApp** uso siempre **esa imagen** `https://iili.io/fm0V224.jpg`.
+
+Y acá tenés el **index completo** ya ajustado:
+
+* **Tarjetas más transparentes** (para ver más el overlay).
+* **Overlay más clarito** (se ve, pero no molesta).
+* **Todos los WhatsApp** ahora usan **tu imagen** como ícono (no SVG).
+
+```html
 <!doctype html>
 <html lang="es-AR">
 <head>
@@ -27,8 +36,11 @@
     :root{
       --bg1:#ffe6f0;
       --bg2:#ffd3e4;
-      --card:#ffffffcc;
-      --card2:#ffffffb8;
+
+      /* cards más transparentes */
+      --cardA: rgba(255,255,255,.72);
+      --cardB: rgba(255,255,255,.52);
+
       --text:#3a2730;
       --muted:#6b4b57;
       --pink:#ff5fa2;
@@ -51,7 +63,7 @@
       overflow-x:hidden;
     }
 
-    /* Overlay (se ve, pero no ensucia; sin recortes: contain) */
+    /* Overlay más clarito, visible pero sin ensuciar */
     body::before{
       content:"";
       position:fixed;
@@ -60,9 +72,9 @@
       background-image:url("https://iili.io/fmlpeHJ.jpg");
       background-repeat:no-repeat;
       background-position:center;
-      background-size:contain; /* mantiene la imagen completa */
-      opacity:.18;
-      filter:saturate(1.05) contrast(1.02);
+      background-size:contain; /* completa, sin recortes */
+      opacity:.26;            /* más visible pero clarito */
+      filter: brightness(1.10) saturate(1.05) contrast(1.02);
       z-index:0;
     }
 
@@ -172,7 +184,7 @@
     .panel{
       border-radius:var(--radius);
       border:1px solid rgba(255,182,209,.6);
-      background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.62));
+      background:linear-gradient(180deg, var(--cardA), var(--cardB)); /* más transparente */
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -187,7 +199,7 @@
       padding:8px 12px;
       border-radius:999px;
       border:1px dashed rgba(255,95,162,.38);
-      background:rgba(255,240,248,.65);
+      background:rgba(255,240,248,.60);
       color:#6b3550;
       font-weight:800;
       font-size:12.5px;
@@ -230,7 +242,6 @@
       border:1px solid rgba(255,182,209,.7);
       min-height:46px;
 
-      /* clave: botones largos que no se cortan */
       width:100%;
       max-width:520px;
       white-space:normal;
@@ -243,8 +254,17 @@
       border:1px solid rgba(255,95,162,.35);
     }
     .btnGhost{
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.74);
       color: #5a2d41;
+    }
+
+    /* WhatsApp logo (imagen) */
+    .waImg{
+      width:22px;
+      height:22px;
+      object-fit:contain;
+      border-radius:6px;
+      flex:0 0 auto;
     }
 
     .heroRight{
@@ -260,7 +280,7 @@
       object-fit:contain;
       filter: drop-shadow(0 14px 30px rgba(255,95,162,.22));
       border-radius:22px;
-      background:rgba(255,255,255,.7);
+      background:rgba(255,255,255,.62); /* un poco más transparente */
       border:1px solid rgba(255,182,209,.65);
       padding:14px;
     }
@@ -274,7 +294,7 @@
       text-align:center;
       padding:9px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,.64);
+      background:rgba(255,255,255,.58);
       border:1px solid rgba(255,182,209,.55);
     }
 
@@ -311,11 +331,11 @@
       padding:16px;
       border-radius:var(--radius);
       border:1px solid rgba(255,182,209,.65);
-      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.60));
+      background: linear-gradient(180deg, var(--cardA), var(--cardB)); /* más transparente */
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      min-height:auto; /* se adapta al texto */
+      min-height:auto;
     }
     .card h3{
       margin:0 0 6px;
@@ -333,7 +353,7 @@
       margin-top:10px;
       padding:7px 10px;
       border-radius:999px;
-      background:rgba(255,240,248,.75);
+      background:rgba(255,240,248,.62);
       border:1px dashed rgba(255,95,162,.34);
       font-weight:800;
       font-size:12px;
@@ -352,7 +372,7 @@
       border-radius:var(--radius);
       overflow:hidden;
       border:1px solid rgba(255,182,209,.7);
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.60));
+      background: linear-gradient(180deg, var(--cardA), var(--cardB)); /* más transparente */
       box-shadow: var(--shadow);
       cursor:pointer;
       transition: transform .16s ease;
@@ -363,7 +383,7 @@
       height:240px;
       object-fit:cover;
       display:block;
-      background:rgba(255,255,255,.65);
+      background:rgba(255,255,255,.55);
     }
     figcaption{
       padding:14px 14px 16px;
@@ -402,7 +422,7 @@
       grid-template-columns: 1.1fr .9fr;
       gap:12px;
     }
-    .contact .card{grid-column:auto}
+
     .list{
       margin:10px 0 0;
       padding:0;
@@ -417,7 +437,7 @@
       padding:10px 12px;
       border-radius:16px;
       border:1px solid rgba(255,182,209,.6);
-      background:rgba(255,255,255,.72);
+      background:rgba(255,255,255,.60); /* más transparente */
     }
     .dot{
       width:10px;height:10px;border-radius:99px;
@@ -436,7 +456,7 @@
       font-size:13px;
       border-radius:var(--radius);
       border:1px solid rgba(255,182,209,.55);
-      background:rgba(255,255,255,.62);
+      background:rgba(255,255,255,.56); /* más transparente */
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -448,7 +468,7 @@
       border-bottom:1px dashed rgba(255,95,162,.55);
     }
 
-    /* Floating WhatsApp (logo oficial SVG) */
+    /* Floating WhatsApp */
     .waFloat{
       position:fixed;
       right:16px;
@@ -459,7 +479,7 @@
       gap:10px;
       padding:12px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.78); /* más transparente */
       border:1px solid rgba(255,182,209,.8);
       box-shadow: 0 14px 35px rgba(74, 23, 49, .18);
       text-decoration:none;
@@ -472,9 +492,6 @@
       line-height:1.2;
       white-space:normal;
     }
-    .waIcon{
-      width:22px;height:22px; flex:0 0 auto;
-    }
 
     /* Lightbox */
     dialog#lightbox{
@@ -484,7 +501,7 @@
       border-radius:26px;
       overflow:hidden;
       box-shadow: 0 30px 90px rgba(0,0,0,.35);
-      background:rgba(255,255,255,.92);
+      background:rgba(255,255,255,.88); /* más transparente */
     }
     dialog::backdrop{
       background: rgba(20, 8, 13, .55);
@@ -537,7 +554,7 @@
     .closeBtn{
       margin-left:auto;
       border:1px solid rgba(255,182,209,.75);
-      background:rgba(255,255,255,.85);
+      background:rgba(255,255,255,.82);
       padding:10px 12px;
       border-radius:14px;
       cursor:pointer;
@@ -566,10 +583,7 @@
       .waFloat{right:12px; bottom:12px}
     }
 
-    /* Footer safe-area so floating button never covers content */
-    .safeBottom{
-      height:88px;
-    }
+    .safeBottom{height:88px}
   </style>
 </head>
 
@@ -601,13 +615,8 @@
         </p>
 
         <div class="ctaRow">
-          <!-- WhatsApp: reemplazá el número -->
-          <a class="btn btnPrimary" id="ctaWhatsapp" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20un%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
-            <!-- WhatsApp oficial (SVG) -->
-            <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
-              <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
-              <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
-            </svg>
+          <a class="btn btnPrimary" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20un%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
+            <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
             Pedir mi personalizado por WhatsApp
           </a>
 
@@ -679,7 +688,6 @@
       </div>
 
       <div class="gallery" id="gallery">
-        <!-- 1 -->
         <figure class="item" data-src="https://iili.io/fm0JVea.png"
                 data-title="Cuadernos personalizados (Pack)"
                 data-desc="Ideal como souvenir, regalo o para vos. Se puede hacer con nombres, frases, temática y colores a elección. ¡Te armo el diseño y lo dejamos a tu estilo!"
@@ -694,7 +702,6 @@
           </figcaption>
         </figure>
 
-        <!-- 2 -->
         <figure class="item" data-src="https://iili.io/fm0Jhzv.png"
                 data-title="Tazas personalizadas (producción)"
                 data-desc="Tazas personalizadas para eventos, equipos, emprendimientos o regalos. Podés elegir logo, frase o diseño. Entrego prolijo, y listo para usar."
@@ -709,7 +716,6 @@
           </figcaption>
         </figure>
 
-        <!-- 3 -->
         <figure class="item" data-src="https://iili.io/fm0JGdF.png"
                 data-title="Tazas plásticas personalizadas (pack)"
                 data-desc="Tazas plásticas personalizadas para eventos y cumpleaños. Se hacen con frase, nombre o diseño. Te paso opciones y coordinamos todo fácil por WhatsApp."
@@ -724,7 +730,6 @@
           </figcaption>
         </figure>
 
-        <!-- 4 -->
         <figure class="item" data-src="https://iili.io/fm0JWmJ.png"
                 data-title="Papelería creativa (kits)"
                 data-desc="Kits con stickers, tarjetas, llaveritos, packaging y detalles personalizados. Ideal para regalar o para armar un evento con estética completa."
@@ -739,7 +744,6 @@
           </figcaption>
         </figure>
 
-        <!-- 5 -->
         <figure class="item" data-src="https://iili.io/fm0JjXR.png"
                 data-title="Bolsitas de cumple / souvenirs"
                 data-desc="Bolsitas de cumpleaños y souvenirs con diseños temáticos (personajes, colores y nombres). Una opción hermosa para que el cumple quede completo."
@@ -776,10 +780,7 @@
 
           <div class="ctaRow" style="margin-top:14px">
             <a class="btn btnPrimary" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20hacer%20un%20pedido%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
-              <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
-                <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
-                <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
-              </svg>
+              <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
               Consultar por WhatsApp (respuesta rápida)
             </a>
 
@@ -812,16 +813,11 @@
     </footer>
   </div>
 
-  <!-- Floating WhatsApp -->
   <a class="waFloat" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20hacer%20un%20pedido%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-    <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
-      <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
-      <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
-    </svg>
+    <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
     <span>WhatsApp (consultas y pedidos)</span>
   </a>
 
-  <!-- Lightbox Dialog -->
   <dialog id="lightbox" aria-label="Vista previa">
     <div class="lb">
       <img class="lbImg" id="lbImg" src="" alt="Vista ampliada" />
@@ -832,6 +828,7 @@
         <p id="lbDesc"></p>
         <div class="lbActions">
           <a class="btn btnPrimary" style="max-width:520px" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20este%20producto%20%E2%9C%A8" target="_blank" rel="noopener">
+            <img class="waImg" src="https://iili.io/fm0V224.jpg" alt="WhatsApp" />
             Consultar por WhatsApp
           </a>
           <a class="btn btnGhost" style="max-width:520px" href="https://instagram.com/di_tati_quaderni" target="_blank" rel="noopener">
@@ -843,10 +840,8 @@
   </dialog>
 
   <script>
-    // Año footer
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Lightbox
     const gallery = document.getElementById("gallery");
     const dialog = document.getElementById("lightbox");
     const lbImg = document.getElementById("lbImg");
@@ -872,12 +867,7 @@
     gallery.addEventListener("click", (e) => {
       const fig = e.target.closest("figure.item");
       if(!fig) return;
-      openLb(
-        fig.dataset.src,
-        fig.dataset.title,
-        fig.dataset.desc,
-        fig.dataset.badge
-      );
+      openLb(fig.dataset.src, fig.dataset.title, fig.dataset.desc, fig.dataset.badge);
     });
 
     lbClose.addEventListener("click", () => dialog.close());
@@ -887,19 +877,14 @@
         e.clientX >= rect.left && e.clientX <= rect.right &&
         e.clientY >= rect.top && e.clientY <= rect.bottom
       );
-      // click afuera cierra
       if(!inDialog) dialog.close();
     });
 
-    // Ajuste extra anti-overflow en móviles
     (function(){
-      const root = document.documentElement;
-      const observer = new ResizeObserver(() => {
-        // si algo genera overflow, evitamos scroll lateral
-        document.body.style.overflowX = "hidden";
-      });
-      observer.observe(root);
+      document.body.style.overflowX = "hidden";
+      window.addEventListener("resize", () => document.body.style.overflowX = "hidden");
     })();
   </script>
 </body>
 </html>
+```
