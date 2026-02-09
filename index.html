@@ -1,838 +1,894 @@
-<!-- =========================
-PARTE 1/2 — index.html (ACTUALIZADO: WhatsApp con TU PNG transparente https://iili.io/fmGYolV.png en TODOS lados)
-Pegá tal cual. La PARTE 2/2 va debajo.
-========================= -->
 <!doctype html>
 <html lang="es-AR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#0b0c10" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f7a7c6" />
 
-  <title>Servicios MB | Fabricación • Montajes • Mantenimiento</title>
-  <meta name="description" content="Fabricación, montajes y mantenimiento. Herrería, reparaciones, estructuras, galpones y tinglados. Colón (Bs. As.). Presupuestos por WhatsApp." />
+  <title>Di Tati | Cuadernos & Papelería personalizada</title>
+  <meta name="description" content="Cuadernos personalizados, papelería creativa, tazas y etiquetas. Ideal para souvenirs, regalos y eventos. Pedí tu diseño por WhatsApp." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Servicios MB | Fabricación • Montajes • Mantenimiento" />
-  <meta property="og:description" content="Herrería, reparaciones y estructuras. Colón (Bs. As.). Presupuestos por WhatsApp." />
-  <meta property="og:image" content="https://iili.io/fm9Ct72.jpg" />
+  <meta property="og:title" content="Di Tati | Cuadernos & Papelería personalizada" />
+  <meta property="og:description" content="Cuadernos personalizados, papelería creativa, tazas y etiquetas. Pedí tu diseño por WhatsApp." />
+  <meta property="og:image" content="https://iili.io/fmlq6dB.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Servicios MB | Fabricación • Montajes • Mantenimiento" />
-  <meta name="twitter:description" content="Herrería, reparaciones y estructuras. Colón (Bs. As.). Presupuestos por WhatsApp." />
-  <meta name="twitter:image" content="https://iili.io/fm9Ct72.jpg" />
+  <meta name="twitter:title" content="Di Tati | Cuadernos & Papelería personalizada" />
+  <meta name="twitter:description" content="Cuadernos personalizados, papelería creativa, tazas y etiquetas. Pedí tu diseño por WhatsApp." />
+  <meta name="twitter:image" content="https://iili.io/fmlq6dB.png" />
 
-  <link rel="icon" href="https://iili.io/fm9Ct72.jpg" />
+  <link rel="icon" href="https://iili.io/fmlq6dB.png" />
 
   <style>
     :root{
-      --bg:#0b0c10;
-      --bg2:#0f121a;
+      --bg1:#ffe6f0;
+      --bg2:#ffd3e4;
 
-      /* Overlay */
-      --overlay-url: url("https://iili.io/fmHsacv.jpg");
-      --overlay-opacity: .22;
+      /* SOLO las tarjetas tienen opacidad */
+      --cardA: rgba(255,255,255,.62);
+      --cardB: rgba(255,255,255,.42);
 
-      /* Cards (más contraste) */
-      --card: rgba(10,10,14,.72);
-      --card2: rgba(10,10,14,.82);
-      --stroke: rgba(255,255,255,.14);
-      --stroke2: rgba(255,255,255,.20);
-
-      --txt: rgba(255,255,255,.94);
-      --muted: rgba(255,255,255,.78);
-      --muted2: rgba(255,255,255,.64);
-
-      --shadow: 0 18px 55px rgba(0,0,0,.58);
-      --r: 22px;
-      --r2: 16px;
+      --text:#3a2730;
+      --muted:#6b4b57;
+      --pink:#ff5fa2;
+      --pink2:#ff86b8;
+      --border:#ffb6d1;
+      --shadow: 0 10px 30px rgba(74, 23, 49, .14);
+      --radius: 22px;
       --max: 1120px;
-
-      --accent1:#C9A227;
-      --accent2:#F2D36B;
-
-      /* ✅ TU LOGO OFICIAL WHATSAPP (PNG TRANSPARENTE) */
-      --waLogoUrl: "https://iili.io/fmGYolV.png";
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      color:var(--txt);
-
-      background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(242,211,107,.12), transparent 55%),
-        radial-gradient(900px 650px at 85% 15%, rgba(201,162,39,.10), transparent 60%),
-        radial-gradient(900px 650px at 70% 95%, rgba(255,255,255,.05), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 15% 10%, #ffffff 0%, transparent 60%),
+                  radial-gradient(900px 600px at 85% 15%, #ffffff 0%, transparent 55%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
       overflow-x:hidden;
-      padding-bottom: calc(92px + env(safe-area-inset-bottom));
-      position:relative;
     }
 
-    /* Overlay de fondo (visible pero legible) */
+    /* Overlay SIN opacidad (queda claro por filtro, no por opacity) */
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      background-image: var(--overlay-url);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: var(--overlay-opacity);
-      filter: saturate(1.05) contrast(1.05);
       pointer-events:none;
-      z-index:-2;
+      background-image:url("https://iili.io/fmlpeHJ.jpg");
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:contain; /* completa, sin recortes */
+      opacity:1;              /* sin opacidad */
+      filter: brightness(1.22) saturate(1.03) contrast(.98);
+      z-index:0;
     }
+
+    /* Soft grain */
     body::after{
       content:"";
       position:fixed;
       inset:0;
-      background: radial-gradient(1200px 900px at 30% 10%, rgba(0,0,0,.25), rgba(0,0,0,.55));
       pointer-events:none;
-      z-index:-1;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.35), transparent 55%),
+        radial-gradient(circle at 75% 20%, rgba(255,255,255,.22), transparent 55%),
+        radial-gradient(circle at 65% 80%, rgba(255,255,255,.25), transparent 60%);
+      opacity:.65;
+      z-index:0;
     }
 
-    a{ color:inherit; text-decoration:none; }
-
-    /* Centrado real en móviles (sin desplazamiento lateral) */
+    a{color:inherit}
     .wrap{
-      width: min(var(--max), calc(100% - 32px));
-      margin-inline:auto;
+      position:relative;
+      z-index:1;
+      width:min(var(--max), 100%);
+      margin:0 auto;
+      padding:22px 18px 80px;
     }
 
     header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(11,12,16,.82), rgba(11,12,16,.40));
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding: 12px 0;
+      padding:12px 14px;
+      border:1px solid rgba(255,182,209,.55);
+      border-radius:calc(var(--radius) + 4px);
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.64));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 0;
+      min-width:0;
     }
-
-    .brandLogo{
-      width:42px; height:42px;
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.22);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      flex: 0 0 auto;
+    .brand img{
+      width:46px;
+      height:46px;
+      object-fit:contain;
+      border-radius:14px;
+      box-shadow:0 6px 18px rgba(255,95,162,.18);
+      background:rgba(255,255,255,.85);
+      border:1px solid rgba(255,182,209,.6);
+      padding:6px;
     }
-    .brandLogo img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-    .brandText{
+    .brand .t{
       display:flex;
       flex-direction:column;
-      gap:2px;
-      min-width:0;
       line-height:1.1;
+      min-width:0;
     }
-    .brandText b{
-      font-size: 14.5px;
-      letter-spacing: .3px;
+    .brand .t b{
+      font-size:15px;
+      letter-spacing:.2px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
-    .brandText span{
-      font-size: 12.5px;
-      color: var(--muted2);
+    .brand .t span{
+      font-size:12.5px;
+      color:var(--muted);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    nav{ display:flex; align-items:center; gap:10px; }
+    nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,182,209,.75);
+      background:rgba(255,255,255,.72);
+      box-shadow:0 10px 25px rgba(255,95,162,.12);
+      transition: transform .15s ease, background .15s ease;
+      white-space:nowrap;
+    }
+    .pill:hover{transform: translateY(-1px); background:rgba(255,255,255,.86)}
+
+    .hero{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,182,209,.6);
+      background:linear-gradient(180deg, var(--cardA), var(--cardB)); /* opacidad SOLO acá */
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    .heroLeft{ padding:18px 18px 16px; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px dashed rgba(255,95,162,.38);
+      background:rgba(255,240,248,.58);
+      color:#6b3550;
+      font-weight:800;
+      font-size:12.5px;
+      letter-spacing:.25px;
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(26px, 4.2vw, 42px);
+      letter-spacing:-.6px;
+      line-height:1.05;
+    }
+    .sub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:clamp(14.5px, 2.4vw, 16.5px);
+      line-height:1.45;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
 
     .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.32);
-      color: var(--txt);
-      padding: 11px 14px;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 14px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      white-space:nowrap;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(0,0,0,.40); border-color: rgba(255,255,255,.24); }
-    .btn:active{ transform: translateY(0px) scale(.99); }
+      padding:12px 14px;
+      border-radius:16px;
+      font-weight:900;
+      letter-spacing:.2px;
+      box-shadow:0 12px 30px rgba(255,95,162,.18);
+      border:1px solid rgba(255,182,209,.7);
+      min-height:46px;
 
+      width:100%;
+      max-width:520px;
+      white-space:normal;
+      text-align:center;
+      line-height:1.2;
+    }
     .btnPrimary{
-      border: 1px solid rgba(242,211,107,.38);
-      background: linear-gradient(135deg, rgba(201,162,39,.26), rgba(242,211,107,.16));
-      box-shadow: 0 12px 35px rgba(0,0,0,.35);
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color:white;
+      border:1px solid rgba(255,95,162,.35);
     }
-    .btnPrimary:hover{
-      border-color: rgba(242,211,107,.60);
-      background: linear-gradient(135deg, rgba(201,162,39,.32), rgba(242,211,107,.20));
-    }
-
-    .btnIcon{ width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; }
-
-    /* ✅ WhatsApp logo (TU PNG) */
-    .waImg{
-      width:18px;
-      height:18px;
-      display:block;
-      object-fit:contain;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,.35));
-    }
-    .waImg.sm{ width:16px; height:16px; }
-    .waImg.lg{ width:20px; height:20px; }
-
-    .waInline{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.32);
-      font-weight: 900;
-      font-size: 12.5px;
-      color: rgba(255,255,255,.92);
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
-      white-space:nowrap;
+    .btnGhost{
+      background: rgba(255,255,255,.74);
+      color: #5a2d41;
     }
 
-    /* HERO */
-    .hero{ padding: 26px 0 14px; }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      align-items:stretch;
-    }
-    .panel{
-      background: linear-gradient(180deg, rgba(10,10,14,.78), rgba(10,10,14,.62));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-    }
-
-    .heroLeft{
-      padding: 20px;
-      position:relative;
-      overflow:hidden;
-    }
-    .heroLeft:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(900px 420px at 20% 10%, rgba(242,211,107,.18), transparent 55%),
-        radial-gradient(700px 360px at 90% 20%, rgba(201,162,39,.14), transparent 58%);
-      pointer-events:none;
-      opacity:.85;
-    }
-    .heroLeft > *{ position:relative; }
-
-    .pillRow{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 14px; }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.32);
-      color: var(--muted);
-      font-weight: 850;
-      font-size: 12.5px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(180deg, var(--accent2), var(--accent1));
-      box-shadow: 0 0 0 3px rgba(242,211,107,.16);
-    }
-
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(26px, 2.7vw, 40px);
-      letter-spacing: .2px;
-      line-height: 1.08;
-      text-shadow: 0 8px 24px rgba(0,0,0,.35);
-    }
-    .sub{
-      margin:0 0 16px;
-      color: var(--muted);
-      font-size: 15.5px;
-      line-height: 1.45;
-      max-width: 60ch;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
-    }
-
-    .heroCtas{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-
-    .mini{
-      font-size: 12.5px;
-      color: var(--muted2);
-      margin-top: 10px;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+    /* WhatsApp oficial SVG */
+    .waIcon{
+      width:22px;height:22px; flex:0 0 auto;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.10));
     }
 
     .heroRight{
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      overflow:hidden;
-    }
-
-    .heroLogoBox{
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 18px;
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.34);
-      min-height: 220px;
+      padding:16px;
+      position:relative;
     }
-    .heroLogoBox img{
-      width: min(320px, 100%);
+    .heroRight .logoHero{
+      width:min(240px, 70%);
       height:auto;
-      display:block;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      object-fit:contain;
+      filter: drop-shadow(0 14px 30px rgba(255,95,162,.22));
+      border-radius:22px;
+      background:linear-gradient(180deg, var(--cardA), var(--cardB));
+      border:1px solid rgba(255,182,209,.65);
+      padding:14px;
+    }
+    .heroRight .hint{
+      position:absolute;
+      bottom:12px;
+      left:12px;
+      right:12px;
+      font-size:12.5px;
+      color:var(--muted);
+      text-align:center;
+      padding:9px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(255,182,209,.55);
     }
 
-    .quickFacts{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-    }
-    .fact{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.34);
-      padding: 12px;
-      min-width:0;
-    }
-    .fact b{ display:block; font-size: 13.5px; }
-    .fact span{ display:block; color: var(--muted2); font-size: 12.5px; margin-top:3px; }
-
-    /* SECCIONES */
-    main{ padding: 10px 0 34px; }
-    .section{ margin-top: 16px; }
-
+    section{margin-top:16px}
     .sectionHead{
       display:flex;
-      align-items:flex-end;
       justify-content:space-between;
-      gap:12px;
-      margin-bottom: 12px;
+      align-items:flex-end;
+      gap:14px;
+      margin:0 0 10px;
+      padding:0 2px;
     }
-    .sectionHead h2{ margin:0; font-size: 18px; letter-spacing:.2px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
-    .sectionHead p{ margin:0; color: var(--muted2); font-size: 13px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
+    .sectionHead h2{
+      margin:0;
+      font-size:clamp(18px, 3.3vw, 24px);
+      letter-spacing:-.2px;
+    }
+    .sectionHead p{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.35;
+      max-width:52ch;
+    }
 
     .grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
     }
 
     .card{
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border: 1px solid var(--stroke);
-      border-radius: var(--r2);
-      padding: 14px;
-      min-width:0;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+      grid-column: span 4;
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,182,209,.65);
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      min-height:auto;
     }
-    .card:hover{ border-color: var(--stroke2); }
-    .card b{
-      display:block;
-      font-size: 14.8px;
-      margin-bottom: 6px;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+    .card h3{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-.2px;
     }
     .card p{
       margin:0;
-      color: var(--muted);
-      font-size: 13.7px;
-      line-height:1.48;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.45;
     }
-
-    /* GALERÍA */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .shot{ padding:0; overflow:hidden; }
-    .shotTop{
-      position:relative;
-      width:100%;
-      aspect-ratio: 4 / 3;
-      background: rgba(0,0,0,.34);
-      border-bottom: 1px solid rgba(255,255,255,.10);
-    }
-    .shotTop img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-      transform: scale(1.01);
-    }
-    .shotBody{ padding: 12px 14px 14px; }
     .tag{
       display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.34);
-      color: var(--muted);
-      font-weight: 850;
-      font-size: 12px;
-      margin-bottom: 8px;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+      margin-top:10px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,240,248,.58);
+      border:1px dashed rgba(255,95,162,.34);
+      font-weight:800;
+      font-size:12px;
+      color:#6b3550;
     }
 
-    .steps{
+    /* Gallery */
+    .gallery{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
     }
-    .stepNum{
-      width:34px; height:34px;
-      border-radius: 14px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-weight: 900;
-      border: 1px solid rgba(242,211,107,.30);
-      background: linear-gradient(135deg, rgba(201,162,39,.26), rgba(242,211,107,.14));
-      margin-bottom: 10px;
-      box-shadow: 0 12px 35px rgba(0,0,0,.25);
+    figure.item{
+      grid-column: span 4;
+      margin:0;
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(255,182,209,.7);
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      transition: transform .16s ease;
+    }
+    figure.item:hover{transform: translateY(-2px)}
+    .thumb{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+      display:block;
+      background:rgba(255,255,255,.55);
+    }
+    figcaption{
+      padding:14px 14px 16px;
+    }
+    .capTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .capTop b{
+      font-size:14.5px;
+      letter-spacing:-.15px;
+      line-height:1.2;
+    }
+    .badge{
+      flex:0 0 auto;
+      font-size:12px;
+      font-weight:900;
+      color:white;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      padding:7px 10px;
+      border-radius:999px;
+      box-shadow:0 10px 25px rgba(255,95,162,.18);
+      white-space:nowrap;
+    }
+    .capText{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13.2px;
+      line-height:1.4;
     }
 
-    .ctaBand{
-      margin-top: 18px;
-      padding: 16px;
-      border-radius: var(--r);
-      border: 1px solid rgba(242,211,107,.24);
-      background: linear-gradient(135deg, rgba(10,10,14,.70), rgba(201,162,39,.12));
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-      backdrop-filter: blur(6px);
+    .contact{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
     }
-    .ctaBand b{ font-size: 15px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
-    .ctaBand span{ color: var(--muted); font-size: 13px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
+
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,182,209,.6);
+      background:rgba(255,255,255,.52);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:10px;height:10px;border-radius:99px;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      margin-top:4px;
+      flex:0 0 auto;
+      box-shadow:0 8px 18px rgba(255,95,162,.18);
+    }
+    .li span{color:var(--muted); font-size:13.4px; line-height:1.35}
 
     footer{
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding: 18px 0 26px;
-      color: var(--muted2);
-      font-size: 12.5px;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+      margin-top:16px;
+      padding:16px 14px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,182,209,.55);
+      background:rgba(255,255,255,.50);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    .footRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap:wrap;
-    }
-    .credit a{
-      color: rgba(242,211,107,.92);
-      border-bottom: 1px dashed rgba(242,211,107,.35);
-      padding-bottom: 1px;
+    footer a{
+      color:#5a2d41;
+      font-weight:900;
+      text-decoration:none;
+      border-bottom:1px dashed rgba(255,95,162,.55);
     }
 
-    /* WhatsApp flotante */
+    /* Floating WhatsApp */
     .waFloat{
       position:fixed;
-      right: 16px;
-      bottom: calc(16px + env(safe-area-inset-bottom));
-      z-index: 60;
+      right:16px;
+      bottom:16px;
+      z-index:50;
       display:flex;
       align-items:center;
       gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.46);
-      border: 1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      padding:12px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.64);
+      border:1px solid rgba(255,182,209,.8);
+      box-shadow: 0 14px 35px rgba(74, 23, 49, .18);
+      text-decoration:none;
+      font-weight:900;
+      color:#2b1c22;
+      max-width:min(92vw, 360px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    .waPill{
-      display:flex; align-items:center; gap:10px;
-      background: linear-gradient(135deg, rgba(37,211,102,.18), rgba(37,211,102,.10));
-      border: 1px solid rgba(255,255,255,.16);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 950;
-      letter-spacing:.2px;
-      font-size: 13.5px;
-      white-space:nowrap;
-      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+    .waFloat span{
+      font-size:13.5px;
+      line-height:1.2;
+      white-space:normal;
     }
 
-    @media (max-width: 900px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .heroLogoBox{ min-height: 200px; }
-      .grid{ grid-template-columns: 1fr; }
-      .gallery{ grid-template-columns: 1fr; }
-      .steps{ grid-template-columns: 1fr; }
-      .quickFacts{ grid-template-columns: 1fr; }
-      nav{ gap:8px; }
-      .btn{ padding: 10px 12px; }
-      .waFloat{ right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); }
+    /* Lightbox */
+    dialog#lightbox{
+      border:0;
+      padding:0;
+      width:min(980px, 92vw);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+      background:rgba(255,255,255,.82);
     }
+    dialog::backdrop{
+      background: rgba(20, 8, 13, .55);
+      backdrop-filter: blur(8px);
+    }
+    .lb{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      min-height: min(72vh, 720px);
+    }
+    .lbImg{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      background:#fff;
+    }
+    .lbInfo{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .lbInfo h3{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-.3px;
+    }
+    .lbInfo p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .lbInfo .lbBadge{
+      align-self:flex-start;
+      font-size:12px;
+      font-weight:900;
+      color:white;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      padding:7px 10px;
+      border-radius:999px;
+      box-shadow:0 10px 25px rgba(255,95,162,.18);
+    }
+    .lbActions{
+      margin-top:auto;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .closeBtn{
+      margin-left:auto;
+      border:1px solid rgba(255,182,209,.75);
+      background:rgba(255,255,255,.82);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .heroRight .hint{position:static; margin-top:12px}
+      .contact{grid-template-columns:1fr}
+      .lb{grid-template-columns:1fr}
+      .lbImg{max-height:48vh}
+    }
+    @media (max-width: 860px){
+      .card{grid-column: span 6}
+      figure.item{grid-column: span 6}
+    }
+    @media (max-width: 520px){
+      header{padding:12px}
+      .brand img{width:44px;height:44px}
+      .pill{font-size:12.5px; padding:9px 11px}
+      .card{grid-column: span 12}
+      figure.item{grid-column: span 12}
+      .thumb{height:220px}
+      .waFloat{right:12px; bottom:12px}
+    }
+
+    .safeBottom{height:88px}
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap">
-      <div class="topbar">
-        <div class="brand">
-          <div class="brandLogo">
-            <img src="https://iili.io/fm9Ct72.jpg" alt="Servicios MB" />
-          </div>
-          <div class="brandText">
-            <b>Servicios MB</b>
-            <span>Colón (Bs. As.) • Fabricación y montajes</span>
-          </div>
+  <div class="wrap" id="top">
+    <header>
+      <div class="brand" aria-label="Marca">
+        <img src="https://iili.io/fmlq6dB.png" alt="Logo Di Tati" />
+        <div class="t">
+          <b>Di Tati</b>
+          <span>Cuadernos • Papelería • Personalizados</span>
         </div>
+      </div>
 
-        <nav aria-label="Navegación">
-          <a class="btn" href="#servicios">Servicios</a>
-          <a class="btn" href="#trabajos">Trabajos</a>
+      <nav aria-label="Navegación">
+        <a class="pill" href="#servicios">Servicios</a>
+        <a class="pill" href="#galeria">Galería</a>
+        <a class="pill" href="#contacto">Contacto</a>
+      </nav>
+    </header>
 
-          <a class="btn btnPrimary" href="#contacto">
-            <span class="btnIcon" aria-hidden="true">
-              <img class="waImg" src="https://iili.io/fmGYolV.png" alt="" />
-            </span>
-            <span>Presupuesto</span>
+    <div class="hero">
+      <div class="panel heroLeft">
+        <div class="kicker">✨ Personalizados a tu estilo • Souvenir • Regalo • Eventos</div>
+        <h1>Cuadernos y papelería creativa que enamoran 💗</h1>
+        <p class="sub">
+          Diseños únicos para uso personal, marcas y celebraciones.
+          Contame la idea y lo armamos: nombres, temáticas, colores y detalles.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20un%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
+            <!-- WhatsApp oficial SVG -->
+            <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+              <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+            </svg>
+            Pedir mi personalizado por WhatsApp
           </a>
-        </nav>
+
+          <a class="btn btnGhost" href="https://instagram.com/di_tati_quaderni" target="_blank" rel="noopener">
+            Ver Instagram @di_tati_quaderni
+          </a>
+        </div>
+      </div>
+
+      <div class="panel heroRight" aria-label="Logo principal">
+        <img class="logoHero" src="https://iili.io/fmlq6dB.png" alt="Di Tati" />
+        <div class="hint">🎀 Cuadernos • Papelería creativa • Tazas • Etiquetas • Anillados</div>
       </div>
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="heroGrid">
-        <div class="panel heroLeft">
-          <div class="pillRow">
-            <div class="pill"><span class="dot"></span> Fabricación</div>
-            <div class="pill"><span class="dot"></span> Montajes</div>
-            <div class="pill"><span class="dot"></span> Mantenimientos</div>
-          </div>
+    <section id="servicios">
+      <div class="sectionHead">
+        <div>
+          <h2>Servicios</h2>
+          <p>Todo se personaliza: nombres, frases, temática, colores y detalles. Ideal para regalos, souvenirs y emprendimientos.</p>
+        </div>
+      </div>
 
-          <h1>Herrería y estructuras<br/>con terminación prolija.</h1>
-          <p class="sub">
-            Trabajos a medida: <b>portones y rejas</b>, <b>puertas metálicas</b>, <b>estructuras</b>,
-            <b>galpones/tinglados</b> y reparaciones.
-            Atención en <b>Colón (Bs. As.)</b> y zona.
-          </p>
+      <div class="grid">
+        <div class="card">
+          <h3>✨ Cuadernos personalizados</h3>
+          <p>Para souvenir, regalo o uso personal. Elegís el estilo y lo armamos a tu gusto.</p>
+          <span class="tag">Diseño incluido</span>
+        </div>
 
-          <div class="heroCtas">
-            <a class="btn btnPrimary" href="https://wa.me/5492477588339?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener">
-              <span class="btnIcon" aria-hidden="true">
-                <img class="waImg" src="https://iili.io/fmGYolV.png" alt="" />
-              </span>
-              <span>Pedir presupuesto</span>
+        <div class="card">
+          <h3>📌 Papelería creativa</h3>
+          <p>Stickers, tarjetas, kits para eventos, packaging y detalles que suman un montón.</p>
+          <span class="tag">Ideal para cumpleaños</span>
+        </div>
+
+        <div class="card">
+          <h3>☕ Tazas personalizadas</h3>
+          <p>Con frases, nombres o diseños. Para regalar o sumar a tu emprendimiento.</p>
+          <span class="tag">A pedido</span>
+        </div>
+
+        <div class="card">
+          <h3>🏷️ Etiquetas personalizadas</h3>
+          <p>Para productos, eventos y packaging. Te doy opciones de estilo y tipografías.</p>
+          <span class="tag">Marca + estética</span>
+        </div>
+
+        <div class="card">
+          <h3>🌀 Anillados</h3>
+          <p>Terminaciones prolijas y resistentes. Perfecto para cuadernos de uso diario.</p>
+          <span class="tag">Durabilidad</span>
+        </div>
+
+        <div class="card">
+          <h3>🎁 Packs para eventos</h3>
+          <p>Armado de combos (cuadernos + etiquetas + souvenirs). Coordinamos todo por WhatsApp.</p>
+          <span class="tag">Todo coordinado</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="sectionHead">
+        <div>
+          <h2>Galería</h2>
+          <p>Ejemplos reales de trabajos. Tocá cualquier imagen para verla grande con su detalle.</p>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <figure class="item" data-src="https://iili.io/fm0JVea.png"
+                data-title="Cuadernos personalizados (Pack)"
+                data-desc="Ideal como souvenir, regalo o para vos. Se puede hacer con nombres, frases, temática y colores a elección. ¡Te armo el diseño y lo dejamos a tu estilo!"
+                data-badge="$55.000 (20 u.)">
+          <img class="thumb" src="https://iili.io/fm0JVea.png" alt="Cuadernos personalizados" />
+          <figcaption>
+            <div class="capTop">
+              <b>Cuadernos personalizados</b>
+              <span class="badge">$55.000 (20 u.)</span>
+            </div>
+            <p class="capText">Souvenir / regalo / uso personal • Diseño incluido • 100% a tu temática.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="item" data-src="https://iili.io/fm0Jhzv.png"
+                data-title="Tazas personalizadas (producción)"
+                data-desc="Tazas personalizadas para eventos, equipos, emprendimientos o regalos. Podés elegir logo, frase o diseño. Entrego prolijo, y listo para usar."
+                data-badge="Personalizadas">
+          <img class="thumb" src="https://iili.io/fm0Jhzv.png" alt="Tazas apiladas personalizadas" />
+          <figcaption>
+            <div class="capTop">
+              <b>Tazas personalizadas</b>
+              <span class="badge">Personalizadas</span>
+            </div>
+            <p class="capText">Perfectas para marcas, eventos y regalos • Logo / frase / diseño a elección.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="item" data-src="https://iili.io/fm0JGdF.png"
+                data-title="Tazas plásticas personalizadas (pack)"
+                data-desc="Tazas plásticas personalizadas para eventos y cumpleaños. Se hacen con frase, nombre o diseño. Te paso opciones y coordinamos todo fácil por WhatsApp."
+                data-badge="$90.000 (30 u.)">
+          <img class="thumb" src="https://iili.io/fm0JGdF.png" alt="Tazas de plástico personalizadas" />
+          <figcaption>
+            <div class="capTop">
+              <b>Tazas plásticas personalizadas</b>
+              <span class="badge">$90.000 (30 u.)</span>
+            </div>
+            <p class="capText">Eventos / cumpleaños • Frases y nombres • Súper prácticas y lindas.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="item" data-src="https://iili.io/fm0JWmJ.png"
+                data-title="Papelería creativa (kits)"
+                data-desc="Kits con stickers, tarjetas, llaveritos, packaging y detalles personalizados. Ideal para regalar o para armar un evento con estética completa."
+                data-badge="Kits">
+          <img class="thumb" src="https://iili.io/fm0JWmJ.png" alt="Papelería creativa y stickers" />
+          <figcaption>
+            <div class="capTop">
+              <b>Papelería creativa</b>
+              <span class="badge">Kits</span>
+            </div>
+            <p class="capText">Stickers • tarjetitas • detalles • estética completa para tu evento o marca.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="item" data-src="https://iili.io/fm0JjXR.png"
+                data-title="Bolsitas de cumple / souvenirs"
+                data-desc="Bolsitas de cumpleaños y souvenirs con diseños temáticos (personajes, colores y nombres). Una opción hermosa para que el cumple quede completo."
+                data-badge="Cumples">
+          <img class="thumb" src="https://iili.io/fm0JjXR.png" alt="Bolsitas de cumpleaños personalizadas" />
+          <figcaption>
+            <div class="capTop">
+              <b>Bolsitas de cumpleaños</b>
+              <span class="badge">Cumples</span>
+            </div>
+            <p class="capText">Temáticas + nombres • Una opción hermosa para souvenirs y bolsitas.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="sectionHead">
+        <div>
+          <h2>Contacto</h2>
+          <p>Te respondo por WhatsApp. Contame qué querés hacer y te paso opciones de diseño.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <h3>📩 Pedidos por WhatsApp</h3>
+          <p>Decime qué producto querés, cantidad, temática y para cuándo lo necesitás.</p>
+          <ul class="list">
+            <li class="li"><span class="dot"></span><span><b>Producto:</b> cuaderno / taza / etiquetas / papelería / evento</span></li>
+            <li class="li"><span class="dot"></span><span><b>Personalización:</b> nombre, frase, colores, temática</span></li>
+            <li class="li"><span class="dot"></span><span><b>Fecha:</b> para cuándo lo necesitás</span></li>
+          </ul>
+
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btnPrimary" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20hacer%20un%20pedido%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener">
+              <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+                <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+                <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+              </svg>
+              Consultar por WhatsApp (respuesta rápida)
             </a>
 
-            <a class="btn" href="#trabajos">Ver trabajos</a>
-
-            <span class="waInline" title="WhatsApp: 2477-588339">
-              <img class="waImg sm" src="https://iili.io/fmGYolV.png" alt="" />
-              2477-588339
-            </span>
+            <a class="btn btnGhost" href="https://instagram.com/di_tati_quaderni" target="_blank" rel="noopener">
+              Escribirme por Instagram
+            </a>
           </div>
-
-          <div class="mini">Respuesta rápida por WhatsApp • Cotización según medidas y tipo de trabajo.</div>
         </div>
 
-        <div class="panel heroRight">
-          <div class="heroLogoBox">
-            <img src="https://iili.io/fm9Ct72.jpg" alt="Logo Servicios MB" />
-          </div>
-          <div class="quickFacts">
-            <div class="fact">
-              <b>Zona</b>
-              <span>Colón, Bs. As.</span>
-            </div>
-            <div class="fact">
-              <b>WhatsApp</b>
-              <span>2477-588339</span>
-            </div>
-            <div class="fact">
-              <b>Respuesta</b>
-              <span>Rápida</span>
-            </div>
-          </div>
+        <div class="card">
+          <h3>💡 Cómo trabajo</h3>
+          <p>Te paso ideas y opciones según lo que necesites. Si ya tenés temática o referencias, mejor todavía.</p>
+          <ul class="list">
+            <li class="li"><span class="dot"></span><span>Me decís qué querés hacer y para cuándo.</span></li>
+            <li class="li"><span class="dot"></span><span>Definimos diseño (nombre, colores, temática, detalles).</span></li>
+            <li class="li"><span class="dot"></span><span>Te muestro cómo quedaría y avanzamos con la producción.</span></li>
+          </ul>
+          <span class="tag">Personalizado de verdad 💗</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <main>
-    <div class="wrap">
+    <div class="safeBottom"></div>
 
-      <section id="servicios" class="section">
-        <div class="sectionHead">
-          <div>
-            <h2>Servicios</h2>
-            <p>Trabajo a medida • Terminación prolija • Montaje en obra</p>
-          </div>
-        </div>
-
-        <div class="grid" role="list">
-          <div class="card" role="listitem">
-            <b>Portones y rejas</b>
-            <p>Fabricación y reparación. Diseños clásicos o artísticos, con buen cierre y terminación.</p>
-          </div>
-          <div class="card" role="listitem">
-            <b>Puertas metálicas / frentes</b>
-            <p>Puertas y tapas metálicas para frentes, parrillas o guardados. Prolijas y resistentes.</p>
-          </div>
-          <div class="card" role="listitem">
-            <b>Estructuras y columnas</b>
-            <p>Columnas, vigas y estructuras para ampliaciones, galpones o tinglados.</p>
-          </div>
-
-          <div class="card" role="listitem">
-            <b>Galpones / Tinglados</b>
-            <p>Estructuras, montajes, refacciones y mantenimiento general.</p>
-          </div>
-          <div class="card" role="listitem">
-            <b>Fabricación a medida</b>
-            <p>Piezas y trabajos especiales (chapas, cajas, cerramientos, refuerzos).</p>
-          </div>
-          <div class="card" role="listitem">
-            <b>Mantenimiento y reparaciones</b>
-            <p>Arreglos, refuerzos, ajustes y puesta a punto. Pintura/terminación según necesidad.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="trabajos" class="section">
-        <div class="sectionHead">
-          <div>
-            <h2>Trabajos realizados</h2>
-            <p>Ejemplos reales del trabajo y terminación</p>
-          </div>
-        </div>
-
-        <div class="gallery" aria-label="Galería de trabajos">
-          <article class="card shot">
-            <div class="shotTop">
-              <img src="https://iili.io/fmHa812.md.png" alt="Fabricación en chapa / caja metálica con terminación" loading="lazy" />
-            </div>
-            <div class="shotBody">
-              <div class="tag">Fabricación a medida</div>
-              <b>Trabajo en chapa / caja metálica</b>
-              <p>Armado y terminación prolija, ideal para cerramientos o piezas especiales.</p>
-            </div>
-          </article>
-
-          <article class="card shot">
-            <div class="shotTop">
-              <img src="https://iili.io/fmHavql.md.png" alt="Puertas metálicas para guardado en parrilla/mesada" loading="lazy" />
-            </div>
-            <div class="shotBody">
-              <div class="tag">Puertas metálicas</div>
-              <b>Puertas para guardado / frente</b>
-              <p>Puertas resistentes con buen encastre y cierre, terminación prolija.</p>
-            </div>
-          </article>
-
-          <article class="card shot">
-            <div class="shotTop">
-              <img src="https://iili.io/fmHaSgS.md.png" alt="Estructura de tinglado o galpón con cubierta" loading="lazy" />
-            </div>
-            <div class="shotBody">
-              <div class="tag">Galpón / Tinglado</div>
-              <b>Estructuras grandes</b>
-              <p>Montaje y mantenimiento de estructuras para galpones y tinglados.</p>
-            </div>
-          </article>
-
-          <article class="card shot">
-            <div class="shotTop">
-              <img src="https://iili.io/fmHagd7.md.png" alt="Portón artístico de herrería con diseño" loading="lazy" />
-            </div>
-            <div class="shotBody">
-              <div class="tag">Portones y rejas</div>
-              <b>Portón artístico</b>
-              <p>Herrería con detalles y diseño, reforzado y con buena terminación.</p>
-            </div>
-          </article>
-
-          <article class="card shot">
-            <div class="shotTop">
-              <img src="https://iili.io/fmHa6mu.md.png" alt="Columnas metálicas para estructura en obra" loading="lazy" />
-            </div>
-            <div class="shotBody">
-              <div class="tag">Montajes</div>
-              <b>Columnas y estructura en obra</b>
-              <p>Montaje de columnas y estructuras para ampliaciones / naves.</p>
-            </div>
-          </article>
-
-          <article class="card shot">
-            <div class="shotTop">
-              <img src="https://iili.io/fmHasXj.md.png" alt="Detalle de fabricación y terminación" loading="lazy" />
-            </div>
-            <div class="shotBody">
-              <div class="tag">Detalles</div>
-              <b>Detalle de terminación</b>
-              <p>Detalles que suman confianza: prolijidad, refuerzos y buen acabado.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="sectionHead">
-          <div>
-            <h2>Cómo trabajamos</h2>
-            <p>Simple y directo para cotizar rápido</p>
-          </div>
-        </div>
-
-        <div class="steps">
-          <div class="card">
-            <div class="stepNum">1</div>
-            <b>Nos escribís</b>
-            <p>Contás qué necesitás y, si podés, mandás fotos/medidas.</p>
-          </div>
-          <div class="card">
-            <div class="stepNum">2</div>
-            <b>Evaluamos y medimos</b>
-            <p>Coordinamos medidas o visita según el trabajo.</p>
-          </div>
-          <div class="card">
-            <div class="stepNum">3</div>
-            <b>Presupuesto y ejecución</b>
-            <p>Te pasamos el presupuesto y avanzamos con el trabajo.</p>
-          </div>
-        </div>
-
-        <div class="ctaBand">
-          <div>
-            <b>¿Querés presupuesto hoy?</b><br/>
-            <span>Escribinos por WhatsApp y lo vemos.</span>
-          </div>
-          <a class="btn btnPrimary" href="#contacto">Contactar</a>
-        </div>
-      </section>
-
-      <!-- PARTE 2/2 arranca abajo -->
-<!-- =========================
-PARTE 2/2 — index.html
-Pegá esto debajo de la PARTE 1/2
-========================= -->
-
-      <section id="contacto" class="section">
-        <div class="sectionHead">
-          <div>
-            <h2>Contacto</h2>
-            <p>Colón (Bs. As.) • Presupuestos por WhatsApp</p>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <b>WhatsApp</b>
-            <p>Escribinos directo para pedir presupuesto: <b>2477-588339</b></p>
-
-            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-              <a class="btn btnPrimary" href="https://wa.me/5492477588339?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener">
-                <span class="btnIcon" aria-hidden="true">
-                  <img class="waImg" src="https://iili.io/fmGYolV.png" alt="" />
-                </span>
-                <span>Escribir por WhatsApp</span>
-              </a>
-
-              <span class="waInline" title="WhatsApp: 2477-588339">
-                <img class="waImg sm" src="https://iili.io/fmGYolV.png" alt="" />
-                2477-588339
-              </span>
-            </div>
-          </div>
-
-          <div class="card">
-            <b>Qué mandar para cotizar</b>
-            <p>
-              • Fotos del lugar o del trabajo<br/>
-              • Medidas aproximadas<br/>
-              • Zona / ubicación<br/>
-              • Si es reparación: qué le pasó
-            </p>
-          </div>
-
-          <div class="card">
-            <b>Horario</b>
-            <p>Agregá acá el horario real cuando me lo pases (lo dejo fijo en la web).</p>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="footRow">
-        <div>© <span id="y"></span> Servicios MB</div>
-        <div class="credit">Creado y diseñado por <a href="https://ciborg347.onrender.com" target="_blank" rel="noopener">Ciborg 347</a></div>
+    <footer>
+      <div>© <span id="y"></span> Di Tati — Personalizados</div>
+      <div style="margin-top:6px;">
+        Creado y diseñado por <a href="https://ciborg347.onrender.com" target="_blank" rel="noopener">Ciborg 347</a>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
-  <!-- Botón flotante WhatsApp (TU PNG) -->
-  <a class="waFloat" href="https://wa.me/5492477588339?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener" aria-label="Abrir WhatsApp para pedir presupuesto">
-    <span class="waPill">
-      <img class="waImg lg" src="https://iili.io/fmGYolV.png" alt="" />
-      Pedir presupuesto
-    </span>
+  <a class="waFloat" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20hacer%20un%20pedido%20personalizado%20%E2%9C%A8" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+      <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+    </svg>
+    <span>WhatsApp (consultas y pedidos)</span>
   </a>
+
+  <dialog id="lightbox" aria-label="Vista previa">
+    <div class="lb">
+      <img class="lbImg" id="lbImg" src="" alt="Vista ampliada" />
+      <div class="lbInfo">
+        <button class="closeBtn" id="lbClose" type="button">Cerrar ✕</button>
+        <div class="lbBadge" id="lbBadge" style="display:none"></div>
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc"></p>
+        <div class="lbActions">
+          <a class="btn btnPrimary" style="max-width:520px" href="https://wa.me/54911XXXXXXXXXX?text=Hola%20Di%20Tati!%20Quiero%20consultar%20por%20este%20producto%20%E2%9C%A8" target="_blank" rel="noopener">
+            <svg class="waIcon" viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="#25D366" d="M19.11 17.24c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.84 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.46.13-.16.18-.27.27-.44.09-.18.04-.33-.02-.46-.07-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.46.07-.71.33-.24.27-.93.91-.93 2.22s.96 2.58 1.09 2.76c.13.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.23.17 1.7.1.52-.08 1.58-.64 1.8-1.26.22-.62.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z"/>
+              <path fill="#25D366" d="M27.2 4.8C24.2 1.8 20.2.1 16 .1 7.2.1 0 7.3 0 16.1c0 2.8.7 5.6 2.1 8.1L0 31.9l8-2.1c2.4 1.3 5.2 2 8 2h.1c8.8 0 16-7.2 16-16 0-4.2-1.6-8.2-4.6-11.2zM16 29.1h-.1c-2.4 0-4.7-.6-6.8-1.8l-.49-.29-4.7 1.23 1.25-4.58-.32-.47c-1.33-2.1-2.04-4.53-2.04-7.02C2.7 8.8 8.7 2.8 16 2.8c3.52 0 6.82 1.37 9.31 3.86s3.86 5.8 3.86 9.31c0 7.3-6 13.1-13.17 13.1z"/>
+            </svg>
+            Consultar por WhatsApp
+          </a>
+          <a class="btn btnGhost" style="max-width:520px" href="https://instagram.com/di_tati_quaderni" target="_blank" rel="noopener">
+            Ver más en Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const gallery = document.getElementById("gallery");
+    const dialog = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbTitle = document.getElementById("lbTitle");
+    const lbDesc = document.getElementById("lbDesc");
+    const lbBadge = document.getElementById("lbBadge");
+    const lbClose = document.getElementById("lbClose");
+
+    function openLb(src, title, desc, badge){
+      lbImg.src = src;
+      lbTitle.textContent = title || "";
+      lbDesc.textContent = desc || "";
+      if(badge){
+        lbBadge.style.display = "inline-flex";
+        lbBadge.textContent = badge;
+      } else {
+        lbBadge.style.display = "none";
+      }
+      if(typeof dialog.showModal === "function") dialog.showModal();
+      else alert(title + "\n\n" + desc);
+    }
+
+    gallery.addEventListener("click", (e) => {
+      const fig = e.target.closest("figure.item");
+      if(!fig) return;
+      openLb(fig.dataset.src, fig.dataset.title, fig.dataset.desc, fig.dataset.badge);
+    });
+
+    lbClose.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const inDialog = (
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top && e.clientY <= rect.bottom
+      );
+      if(!inDialog) dialog.close();
+    });
+
+    (function(){
+      document.body.style.overflowX = "hidden";
+      window.addEventListener("resize", () => document.body.style.overflowX = "hidden");
+    })();
   </script>
 </body>
 </html>
